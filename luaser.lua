@@ -70,7 +70,7 @@ local function ser(var, enc)
 	-- 序列化表, ret字符串必须与后面的loca ret=%s中的ret相同，因为这个ret可能也会组织到结果字符串中。
 	local ret = table_ser(var, "ret", mark, assign)
 	local ret = string.format("local ret=%s %s return ret", ret, table.concat(assign, ";"))
-	return (enc==nil or enc==true) and string.dump(loadstring(ret)) or ret
+	return (enc==nil or enc==true) and string.dump(load(ret)) or ret
 end
 
 return ser
